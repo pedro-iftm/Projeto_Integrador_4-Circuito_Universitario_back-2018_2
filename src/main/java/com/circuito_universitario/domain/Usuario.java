@@ -1,11 +1,15 @@
 package com.circuito_universitario.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Usuario implements Serializable {
@@ -17,6 +21,9 @@ public class Usuario implements Serializable {
 	private String nomeUser;
 	private String faculdadeUser;
 	private Integer idadeUser;
+
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	private List<Evento> eventos = new ArrayList<>();
 
 //CONSTRUTOR
 	public Usuario(Integer idUser, String nomeUser, String faculdadeUser, Integer idadeUser) {
@@ -31,6 +38,7 @@ public class Usuario implements Serializable {
 	public Integer getIdUser() {
 		return idUser;
 	}
+
 	public void setIdUser(Integer idUser) {
 		this.idUser = idUser;
 	}
@@ -38,6 +46,7 @@ public class Usuario implements Serializable {
 	public String getNomeUser() {
 		return nomeUser;
 	}
+
 	public void setNomeUser(String nomeUser) {
 		this.nomeUser = nomeUser;
 	}
@@ -45,6 +54,7 @@ public class Usuario implements Serializable {
 	public String getFaculdadeUser() {
 		return faculdadeUser;
 	}
+
 	public void setFaculdadeUser(String faculdadeUser) {
 		this.faculdadeUser = faculdadeUser;
 	}
@@ -52,11 +62,19 @@ public class Usuario implements Serializable {
 	public Integer getIdadeUser() {
 		return idadeUser;
 	}
+
 	public void setIdadeUser(Integer idadeUser) {
 		this.idadeUser = idadeUser;
 	}
 
-//HASH/EQUALS
+	public List<Evento> getEventos() {
+		return eventos;
+	}
+	public void setEventos(List<Evento> eventos) {
+		this.eventos = eventos;
+	}
+
+	// HASH/EQUALS
 	@Override
 	public int hashCode() {
 		final int prime = 31;
