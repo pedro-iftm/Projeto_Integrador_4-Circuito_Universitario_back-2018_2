@@ -21,25 +21,20 @@ public class Evento implements Serializable {
 	private Integer idEvento;
 	private String nomeEvento;
 	private String descricaoEvento;
-	private Date dataEvento;
+	private String dataEvento;
 	private String enderecoEvento;
-	private String imagemEvento;
 
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name = "usuario_id")
-	private Usuario usuario;
-
+	public Evento () {
+		
+	}
 //CONTRUTOR
-	public Evento(Integer idEvento, String nomeEvento, String descricaoEvento, Date dataEvento, String enderecoEvento,
-			String imagemEvento) {
+	public Evento(Integer idEvento, String nomeEvento, String descricaoEvento, String dataEvento, String enderecoEvento) {
 		super();
 		this.idEvento = idEvento;
 		this.nomeEvento = nomeEvento;
 		this.descricaoEvento = descricaoEvento;
 		this.dataEvento = dataEvento;
 		this.enderecoEvento = enderecoEvento;
-		this.imagemEvento = imagemEvento;
 	}
 
 //GET & SET
@@ -67,11 +62,11 @@ public class Evento implements Serializable {
 		this.descricaoEvento = descricaoEvento;
 	}
 
-	public Date getDataEvento() {
+	public String getDataEvento() {
 		return dataEvento;
 	}
 
-	public void setDataEvento(Date dataEvento) {
+	public void setDataEvento(String dataEvento) {
 		this.dataEvento = dataEvento;
 	}
 
@@ -81,21 +76,6 @@ public class Evento implements Serializable {
 
 	public void setEnderecoEvento(String enderecoEvento) {
 		this.enderecoEvento = enderecoEvento;
-	}
-
-	public String getImagemEvento() {
-		return imagemEvento;
-	}
-
-	public void setImagemEvento(String imagemEvento) {
-		this.imagemEvento = imagemEvento;
-	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
 	}
 
 	// HASH & EQUALS
